@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
 {
-    [SerializeField] int width = 10;
-    [SerializeField] int length = 10;
-    [SerializeField] float spacing = 1.0f;
+    [SerializeField] int width = 100;
+    [SerializeField] int length = 100;
     [SerializeField] float height = 2.0f;
+    [SerializeField] float scale = 20.0f;
 
     List<Vector3> terrainVertices;
     List<int> terrainTriangles;
@@ -30,7 +30,7 @@ public class TerrainGenerator : MonoBehaviour
     {
         List<Vector3> points = new List<Vector3>();
 
-        float offset = Random.RandomRange(100.0f, 200.0f);
+        float offset = Random.Range(100.0f, 200.0f);
 
 
         for (int z = 0; z < length; z++)
@@ -46,8 +46,8 @@ public class TerrainGenerator : MonoBehaviour
 
     float RandomHeight(int x, int z, float offset)
     {
-        float xCoord = (float)x / width;
-        float zCoord = (float)z / width;
+        float xCoord = (float)x / width * scale;
+        float zCoord = (float)z / width * scale;
 
         xCoord += offset;
         zCoord += offset;
