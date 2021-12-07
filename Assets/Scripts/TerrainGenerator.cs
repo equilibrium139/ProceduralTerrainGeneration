@@ -8,7 +8,7 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] int length = 100;
     [SerializeField] float height = 2.0f;
     [SerializeField] float scale = 20.0f;
-
+    [SerializeField] bool pits = false;
     List<Vector3> terrainVertices;
     List<int> terrainTriangles;
     Mesh terrainMesh;
@@ -29,10 +29,40 @@ public class TerrainGenerator : MonoBehaviour
     List<Vector3> RandomGridPoints()
     {
         List<Vector3> points = new List<Vector3>();
-
         float offset = Random.Range(100.0f, 200.0f);
 
+        for (int z = 0; z < length; z++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                points.Add(new Vector3(x, RandomHeight2(x, z, offset, pits) * height, z));
+            }
+        }
 
+        /*
+        if (pits)
+        {
+            //int z = Random.Range(0, length);
+            for (int z = 0; z < length; z++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    points.Add(new Vector3(x, RandomHeight2(x, z, offset, pits) * height , z));
+                }
+            }
+        }
+        else
+        {
+            for (int z = 0; z < length; z++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    points.Add(new Vector3(x, RandomHeight(x, z, offset) * height, z));
+                }
+            }
+        }
+        */
+        /*
         for (int z = 0; z < length; z++)
         {
             for (int x = 0; x < width; x++)
@@ -40,6 +70,7 @@ public class TerrainGenerator : MonoBehaviour
                 points.Add(new Vector3(x, RandomHeight(x, z, offset) * height, z));
             }
         }
+        */
 
         return points;
     }
@@ -55,6 +86,20 @@ public class TerrainGenerator : MonoBehaviour
         return Mathf.PerlinNoise(xCoord, zCoord);
     }
 
+    float RandomHeight2(int x, int z, float offset, bool pits)
+    {
+        float xCoord = (float)x / width * scale;
+        float zCoord = (float)z / width * scale;
+
+        xCoord += offset;
+        zCoord += offset;
+
+        if (pits)
+        {
+            return Mathf.PerlinNoise(xCoord, zCoord) * -1;
+        }
+        return Mathf.PerlinNoise(xCoord, zCoord);
+    }
     List<int> CreateGridTriangles()
     {
         List<int> triangles = new List<int>();
