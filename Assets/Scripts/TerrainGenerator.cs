@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
 {
-    [SerializeField] int width = 100;
-    [SerializeField] int length = 100;
+    [SerializeField] int width = 50;
+    [SerializeField] int length = 50;
     [SerializeField] float height = 2.0f;
     [SerializeField] float scale = 20.0f;
     //[SerializeField] bool pits = false;
