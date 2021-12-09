@@ -8,7 +8,9 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] int length = 100;
     [SerializeField] float height = 2.0f;
     [SerializeField] float scale = 20.0f;
-    [SerializeField] bool pits = false;
+    //[SerializeField] bool pits = false;
+    //[SerializeField] bool peaks = false;
+    [SerializeField] bool hillSlope = false;
     List<Vector3> terrainVertices;
     List<int> terrainTriangles;
     Mesh terrainMesh;
@@ -35,7 +37,16 @@ public class TerrainGenerator : MonoBehaviour
         {
             for (int x = 0; x < width; x++)
             {
-                points.Add(new Vector3(x, RandomHeight2(x, z, offset, pits) * height, z));
+                //points.Add(new Vector3(x, RandomHeight2(x, z, offset, pits, peaks) * height, z));
+                if (hillSlope )
+                {
+                    points.Add(new Vector3(x, RandomHeight(x, z, offset) * height * ((float)(x*z)/(width*length)), z));
+                    Debug.Log(((float)(x + z) / (width + length))+ " x="+ x+ " z="+ z);
+                }
+                else
+                {
+                    points.Add(new Vector3(x, RandomHeight(x, z, offset) * height, z));
+                }
             }
         }
 
@@ -86,7 +97,7 @@ public class TerrainGenerator : MonoBehaviour
         return Mathf.PerlinNoise(xCoord, zCoord);
     }
 
-    float RandomHeight2(int x, int z, float offset, bool pits)
+    float RandomHeight2(int x, int z, float offset, bool pits, bool peaks)
     {
         float xCoord = (float)x / width * scale;
         float zCoord = (float)z / width * scale;
@@ -98,8 +109,19 @@ public class TerrainGenerator : MonoBehaviour
         {
             return Mathf.PerlinNoise(xCoord, zCoord) * -1;
         }
+        else if (peaks)
+        {
+            float peakOffset = Random.Range(400.0f, 600.0f);
+            bool apply = (Random.value > 0.5f);
+            if (apply)
+            {
+                xCoord += peakOffset;
+                zCoord += peakOffset;
+            }
+        }
         return Mathf.PerlinNoise(xCoord, zCoord);
     }
+
     List<int> CreateGridTriangles()
     {
         List<int> triangles = new List<int>();

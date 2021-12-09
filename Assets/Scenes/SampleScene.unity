@@ -191,7 +191,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549841643}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &549841646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,9 +206,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 50
   length: 50
-  height: 4
+  height: 8
   scale: 4
-  pits: 0
+  hillSlope: 1
 --- !u!4 &549841647
 Transform:
   m_ObjectHideFlags: 0
@@ -392,13 +392,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.18158138, y: 0.7789235, z: -0.26185644, w: 0.5401274}
-  m_LocalPosition: {x: -23.419512, y: 42.490837, z: 40}
+  m_LocalRotation: {x: 0.27059805, y: 0.6532815, z: -0.27059805, w: 0.6532815}
+  m_LocalPosition: {x: -23, y: 58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 90, z: 0}
 --- !u!1 &1136361628
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,9 +432,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 50
   length: 50
-  height: 8
-  scale: 8
-  pits: 0
+  height: 20
+  scale: 4
+  hillSlope: 1
 --- !u!4 &1136361630
 Transform:
   m_ObjectHideFlags: 0
@@ -498,7 +498,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136361628}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1569023512
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +567,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1569023512}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &1569023515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,7 +584,7 @@ MonoBehaviour:
   length: 50
   height: 8
   scale: 8
-  pits: 0
+  hillSlope: 0
 --- !u!4 &1569023516
 Transform:
   m_ObjectHideFlags: 0
@@ -667,7 +667,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602565956}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &1602565959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,7 +684,7 @@ MonoBehaviour:
   length: 50
   height: 8
   scale: 8
-  pits: 0
+  hillSlope: 0
 --- !u!4 &1602565960
 Transform:
   m_ObjectHideFlags: 0
